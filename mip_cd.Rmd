@@ -1,0 +1,18 @@
+---
+title: "mip_cd"
+author: "Iwo Augustyński"
+date: "17 12 2019"
+output: html_document
+---
+
+## Data and reports
+
+### Scoreboard data platforms:
+
+
+- Scoreboard and auxiliary indicators: interactive database compiled by Eurostat.This data platform enables to download the official scoreboard used in different [alert mechanism reports](https://ec.europa.eu/info/business-economy-euro/economic-and-fiscal-policy-coordination/eu-economic-governance-monitoring-prevention-correction/macroeconomic-imbalance-procedure/alert-mechanism-report_en) to be downloaded.
+- [Latest live data for the scoreboard indicators](https://ec.europa.eu/eurostat/web/macroeconomic-imbalances-procedure/data/scoreboard) compiled by Eurostat. The data published on this page are regularly updated and may therefore differ from those used for the latest alert mechanism reports.
+<br>
+<br>
+<br>
+Author: Iwo Augustyński

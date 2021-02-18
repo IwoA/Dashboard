@@ -1,0 +1,29 @@
+---
+title: "MIP"
+author: "Iwo Augustyński"
+date: "17 12 2019"
+output: html_document
+---
+
+# Macroeconomic imbalance procedure scoreboard
+
+The analysis in the alert mechanism report (AMR) builds on the economic reading of a scoreboard of 14 headline indicators covering the most relevant areas of macroeconomic imbalances, competitiveness, and adjustment issues. These 14 indicators are complemented by 25 auxiliary indicators providing additional information. The scoreboard is designed to capture the most relevant internal and external aspects of macroeconomic imbalances through a limited set of relevant indicators of  high  statistical quality.
+
+## Scoreboard indicators
+
+The headline indicators consist of the following 14 indicators and indicative thresholds, covering the major sources of macroeconomic imbalances:
+
+- 3-year backward moving average of the current account balance as percent of GDP, with  thresholds of +6% and -4%
+- net international investment position as percent of GDP, with a threshold of -35%
+    5-year percentage change of export market shares measured in values, with a threshold of -6%
+- 3-year percentage change in nominal unit labour cost, with thresholds of +9% for euro area countries and +12% for non-euro area countries
+- 3-year percentage change of the real effective exchange rates based on HICP/CPI deflators, relative to 41 other industrial countries, with thresholds of -/+5% for euro area countries and -/+11% for non-euro area countries
+- private sector debt (consolidated) in % of GDP with a threshold of 133%
+- private sector credit flow in % of GDP with a threshold of 14%
+- year-on-year changes in house prices relative to a Eurostat consumption deflator, with a threshold of 6%
+- general government sector debt in % of GDP with a threshold of 60%
+- 3-year backward moving average of unemployment rate, with a threshold of 10%
+- year-on-year changes in total financial sector liabilities, with a threshold of 16.5%
+- 3-year change in p.p. of the activity rate, with a threshold of -0.2%
+- 3-year change in p.p. of the long-term unemployment rate, with a threshold of +0.5%
+- 3-year change in p.p. of the youth unemployment rate, with a threshold of +2%

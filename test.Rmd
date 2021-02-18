@@ -1,36 +1,42 @@
+---
+title: "Untitled"
+author: "Iwo Augustyński"
+date: "17 12 2019"
+output: html_document
+---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r, echo=FALSE}
 library(shiny)
 library(eurostat)
 library(dplyr)
 library(tidyr)
 library(plotly)
 
-## pobieranie danych 
-# df <- get_eurostat("mips_sa")
-# df_l <- get_eurostat("mips_sa", type = "label") #already with full labels
-# labels <- df_l$indic_ip
-# names(labels) <- "labels"
-# df1 <- bind_cols(df, tibble::enframe(labels, name = NULL)) %>% rename(labels = value)
-# df2 <- df1 %>% filter(release == "SA21")
-# df2$labels <- droplevels(df2$labels)
-#  
-# saveRDS(df2, "mip_data.rds")
-df2 <- readRDS("mip_data.rds")
-
-
-# indicators_h <- df1 %>% select(indic, labels) %>% filter(indic == "IND_H")
-# indicators_a <- df1 %>% select(indic, labels) %>% filter(indic == "IND_A")
-# indicators <- c(unique(as.character(indicators_h$labels)), unique(as.character(indicators_a$labels)))
-indicators_t <- df2 %>% select(indic, labels) %>% filter(indic == "IND_T")
-indicators <- levels(indicators_t$labels)
+shinyApp(
+  ## pobieranie danych 
+df <- get_eurostat("mips_sa")
+df_l <- get_eurostat("mips_sa", type = "label") #already with full labels
+labels <- df_l$indic_ip
+names(labels) <- "labels"
+df1 <- bind_cols(df, tibble::enframe(labels, name = NULL)) %>% rename(labels = value) 
+df2 <- df1 %>% filter(release == "SA19")
 
 # Define UI for application
 ui <- fluidPage(theme = "bootstrap.css",
      
 ## Pierwsza czesc opisu    
       fluidPage(
-           includeMarkdown("mip.Rmd") 
+          # includeMarkdown("mip.Rmd") 
       ),
 #######################
 
@@ -43,7 +49,7 @@ ui <- fluidPage(theme = "bootstrap.css",
                                                               "Portugal", "Romania", "Sweden", "Slovenia", "Slovakia"),
                                                selected = "Poland"),
                                    selectInput("indicator", "Select indicator",
-                                               choices = as.list(indicators), selected = "Unemployment rate - %")
+                                               choices = as.list(unique(as.character(df1$labels)), selected = "General government sector debt - % of GDP"))
                                    
      )),
      
@@ -54,8 +60,8 @@ ui <- fluidPage(theme = "bootstrap.css",
           #textOutput("text2")
      ),
 ## Druga czesc opisu
-      fluidPage( 
-           includeMarkdown("mip_cd.Rmd")
+      fluidPage( "# Data and Reports"
+     #      includeMarkdown("Bilanse-aneks.Rmd")
       )
 #######################
 )
@@ -107,15 +113,25 @@ server <- function(input, output) {
                                             "<br>Value: ", round(unsel$values, digits = 2),
                                             "<br>Date: ", unsel$time),
                                hoverinfo = 'text') %>% 
-                     add_trace(x = sel$time, y=sel$values, mode = "lines", line = list(color = "red", width = 4),
+                     add_trace(x = sel$time, y=sel$values, mode = "lines", line = list(color = "#00c0ef"),
                                text = paste("Country: ", sel$geo,
                                             "<br>Value: ", round(sel$values, digits = 2),
                                             "<br>Date: ", sel$time),
                                hoverinfo = 'text') %>%
-                     layout(showlegend = FALSE, title = "", xaxis = list(title = ""), yaxis = list(title = ""))
+                     layout(showlegend = FALSE, title = labels[1], xaxis = list(title = ""), yaxis = list(title = ""))
              
      })
 }
+  
+)
+```
 
-# Run the application 
-shinyApp(ui = ui, server = server)
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
